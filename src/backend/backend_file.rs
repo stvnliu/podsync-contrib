@@ -4,7 +4,7 @@
 use std::collections::HashSet;
 use std::fs::{self, File, OpenOptions};
 use std::io::{BufRead, BufReader, ErrorKind, Write};
-use std::path::PathBuf;
+use std::path::{Path, PathBuf};
 
 use log::{error, info, warn};
 
@@ -24,11 +24,8 @@ pub struct Backend {
     root: PathBuf,
 }
 
-// Change introduced to match function signature with backend_sql
-pub async fn init(data_dir: &PathBuf) {}
-
 impl Backend {
-    pub async fn new(path: &PathBuf) -> Self {
+    pub async fn new(path: &Path) -> Self {
         Self {
             root: path.to_path_buf(),
         }
